@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dharti Dashboard</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f8f1; /* Light, calm nature green */
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Navbar Layout */
+        .navbar {
+            background-color: #4caf50;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar-menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-menu li {
+            margin-left: 20px;
+        }
+
+        .navbar-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .navbar-menu a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Container */
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 30px auto;
+        }
+
+        /* Card Component */
+        .card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid #e0e0e0;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #2e7d32;
+            border-bottom: 2px solid #e8f5e9;
+            padding-bottom: 10px;
+        }
+
+        /* Guidance Section */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .btn {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #388e3c;
+        }
+
+        .suggest-box {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+            border-left: 4px solid #4caf50;
+        }
+
+        .suggest-btn {
+            background-color: white;
+            border: 1px solid #4caf50;
+            color: #2e7d32;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin: 5px 5px 0 0;
+            cursor: pointer;
+        }
+
+        .suggest-btn:hover {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        /* Crop Cards (Flexbox Layout) */
+        .crop-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .crop-card {
+            background-color: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            width: 220px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .crop-card h3 {
+            margin: 10px 0 5px;
+            color: #333;
+        }
+
+        .crop-card p {
+            margin: 5px 0 10px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .status.good { background-color: #c8e6c9; color: #2e7d32; }
+        .status.warning { background-color: #ffecb3; color: #f57f17; }
+
+        /* Actions List */
+        ul.action-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul.action-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        ul.action-list li:last-child {
+            border-bottom: none;
+        }
+
+        .date-text {
+            color: #888;
+            font-style: italic;
+            font-size: 14px;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <div class="navbar">
+        <div class="navbar-brand">🌱 Dharti Dashboard</div>
+        <ul class="navbar-menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">My Plants</a></li>
+            <li><a href="#">Profile</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        
+        <!-- Guidance Row -->
+        <div class="card">
+            <h2>Ask for Guidance</h2>
+            <div class="form-group">
+                <p>Describe your plant's condition or ask a general gardening question:</p>
+                <textarea rows="4" placeholder="Example: My indoor snake plant's leaves are turning yellow. What should I do?"></textarea>
+            </div>
+            <button class="btn">Get Expert Advice</button>
+            
+            <div class="suggest-box">
+                <strong>Or use a quick suggestion:</strong><br>
+                <button class="suggest-btn">Why are my plant's leaves turning yellow?</button>
+                <button class="suggest-btn">How often should I water my tomatoes?</button>
+                <button class="suggest-btn">Best indoor lighting spots</button>
+            </div>
+        </div>
+
+        <!-- Plants Row -->
+        <div class="card">
+            <h2>My Crops & Plants</h2>
+            <div class="crop-container">
+                <div class="crop-card">
+                    <div style="font-size: 40px;">🍅</div>
+                    <h3>Cherry Tomato</h3>
+                    <p>Balcony Pot</p>
+                    <span class="status good">Healthy</span>
+                </div>
+                
+                <div class="crop-card">
+                    <div style="font-size: 40px;">🪴</div>
+                    <h3>Aloe Vera</h3>
+                    <p>Living Room</p>
+                    <span class="status warning">Needs Water</span>
+                </div>
+
+                <div class="crop-card">
+                    <div style="font-size: 40px;">🌿</div>
+                    <h3>Sweet Basil</h3>
+                    <p>Kitchen Window</p>
+                    <span class="status good">Thriving</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
